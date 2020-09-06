@@ -5,7 +5,7 @@ double f(double x){
 	double y = (pow(x,3)-4*x-9);
 	return y;
 }
-void main(){
+int main(){
 	double x1, x2, y, x3, oldX3=0, count=0;
 	int  i=1, test=0;
 	printf("Enter the value of lower range: \n");
@@ -40,4 +40,5 @@ void main(){
 			i++;
 		}	
 	}
+	return 0;
 }
