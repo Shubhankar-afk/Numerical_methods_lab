@@ -1,10 +1,14 @@
-//Program to calculate root of quadratic equation
+//Program to calculate root of quadratic equation, using bisection method
 #include<stdio.h>
 #include<math.h>
+#define tolerance 0.001		//defined tolerance value
+
+//function defination for the mathematical function of x
 double f(double x){
 	double y = (pow(x,3)-4*x-9);
 	return y;
 }
+
 int main(){
 	double x1, x2, y, x3, oldX3=0, count=0;
 	int  i=1, test=0;
@@ -14,9 +18,7 @@ int main(){
 	scanf("%lf", &x2);
 	while(1){
 		x3=(x1+x2)/2;
-		if(x3-oldX3<=0.0009){
-			printf("%d. x = %lf\n", i, x3);
-			i++;
+		if(x3-oldX3<=tolerance){
 			if(test==3){
 				printf("Acceptable root of equation = %.3lf\n", x3);
 				break;
@@ -29,16 +31,13 @@ int main(){
 		}
 		else if(f(x1)*f(x3)>0){
 			x1=x3;
-			printf("%d. x = %lf\n", i, x3);
-			oldX3=x3;
-			i++;
 		}
 		else{
 			x2=x3;
-			printf("%d. x = %lf\n", i, x3);
-			oldX3=x3;
-			i++;
-		}	
+		}
+		oldX3=x3;
+		printf("%d. x = %lf\n", i, x3);
+		i++;	
 	}
 	return 0;
 }
