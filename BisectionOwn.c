@@ -10,17 +10,23 @@ double f(double x){
 }
 
 int main(){
-	double x1, x2, y, x3, oldX3=0, count=0;
+	double x1, x2, x3, oldX3=0;
 	int  i=1, test=0;
-	printf("Enter the value of lower range: \n");
+	label:	printf("Enter the value of lower range: \n");
 	scanf("%lf", &x1);
+	printf("Now f(x1) = %lf\n", f(x1));
 	printf("Enter the value of upper range: \n");
 	scanf("%lf", &x2);
+	printf("Now f(x2) = %lf\n", f(x2));
+	if(f(x1)*f(x2)>0){
+		printf("Here f(x1)*f(x2)>0. Try a different range.\n");
+		goto label;
+	}
 	while(1){
 		x3=(x1+x2)/2;
-		if(x3-oldX3<=tolerance){
+		if(fabs(x3-oldX3)<=tolerance){
 			if(test==3){
-				printf("Acceptable root of equation = %.3lf\n", x3);
+				printf("Acceptable root of equation = %.3lf\nIteration %d", x3, i-3);
 				break;
 			}
 			test++;
@@ -29,14 +35,15 @@ int main(){
 			printf("Root of equation = %lf\n", x3);
 			break;
 		}
-		else if(f(x1)*f(x3)>0){
+		if(f(x1)*f(x3)>0){
 			x1=x3;
 		}
 		else{
 			x2=x3;
 		}
 		oldX3=x3;
-		printf("%d. x = %lf\n", i, x3);
+		//printf("%d. x = %lf\n", i, x3);
+		printf("%d. f(x%d) = %lf, x%d = %lf\n", i, i-1, f(x3), i-1, x3);
 		i++;	
 	}
 	return 0;
