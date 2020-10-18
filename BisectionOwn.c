@@ -5,7 +5,7 @@
 
 //function defination for the mathematical function of x
 double f(double x){
-	double y = (pow(x,3)-4*x-9);
+	double y = (pow(x,2)-4*x-9);
 	return y;
 }
 
