@@ -5,12 +5,12 @@
 
 double f(double x){
 	double y;
-	y=pow(x, 3)-6*x+4;
+	y=-pow(x, 3)+13*pow(x, 2)-6*x-112;
 	return y;
 }
 double fd(double x){
 	double y;
-	y=3*pow(x, 2)-6;
+	y=-3*pow(x, 2)+26*x-6;
 	return y;
 }
 
@@ -20,13 +20,18 @@ int main(){
 	label:	printf("Enter the lower limit: ");
 	scanf("%lf", &a);
 	printf("Now f(a) = %lf\n", f(a));
-	printf("Enter the upper limit: ");
+	/*printf("Enter the upper limit: ");
 	scanf("%lf", &b);
 	printf("Now f(b) = %lf\n", f(b));
 	if(f(a)*f(b)>0){
 		printf("Here f(a)*f(b)>0. Try a different range.\n");
 		goto label;
-	}
+	}*/
+	/*-------------------- Test Code -----------------------*/
+	x3=a;
+	printf("x0 = %lf\n", a);
+	/*-------------------- Test Code -----------------------*/
+	/*
 	if(fabs(f(a))<=fabs(f(b))){
 		x3=a;
 		printf("x0 = %lf\n", a);
@@ -34,7 +39,7 @@ int main(){
 	else{
 		x3=b;
 		printf("x0 = %lf\n", b);
-	}
+	}*/
 	do{
 		newX=x3-(f(x3)/fd(x3));
 		printf("%d. f(x%d) = %lf, fd(x%d) = %.5lf, x%d = %lf\n", count, count-1, f(x3), count-1, fd(x3), count, newX);
